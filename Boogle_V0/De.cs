@@ -46,7 +46,7 @@ namespace Boogle_V0
             }
 
             faces_visibles.Add(this.face_visible);
-            face_x();
+         
         }
         public char Face_Visible{
             get {return this.face_visible;}

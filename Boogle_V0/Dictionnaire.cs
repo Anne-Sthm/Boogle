@@ -62,6 +62,11 @@ namespace Boogle_V0
             get { return this.mots.Count; }
         }
 
+        public List<string> Mots
+        {
+            get { return this.mots; }
+        }
+
 
         public override string ToString()
         {

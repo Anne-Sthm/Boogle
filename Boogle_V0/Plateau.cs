@@ -20,7 +20,7 @@ namespace Boogle_V0
         {
             this.de_plateau = Remplir_Plateau();
         }
-
+ 
         public List<De> Remplir_Plateau()
         {
             List<De> des = new List<De>();
@@ -82,14 +82,14 @@ namespace Boogle_V0
         public bool Test_Plateau(int previous_x, int previous_y, int compteur, string mot, bool[,] used_de)
         {
 
-            if (compteur < 0)
+            if (compteur < mot.Length)
             {
                 int delta_x = x_pos(mot[compteur]) - previous_x;
                 int delta_y = y_pos(mot[compteur]) - previous_y;
 
                 if (x_pos(mot[compteur]) != -10 && y_pos(mot[compteur]) != -10)
                 {
-                    if ((delta_x == 0 && (delta_y == delta_x)) || used_de[x_pos(mot[compteur]), y_pos(mot[compteur])] ==true)
+                    if (used_de[x_pos(mot[compteur]), y_pos(mot[compteur])])
                     {
                         return false;
                     }

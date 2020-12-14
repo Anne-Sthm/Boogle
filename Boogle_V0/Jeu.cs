@@ -6,14 +6,36 @@ namespace Boogle_V0
 {
     class Jeu
     {
-        List<Dictionnaire> mondico = new List<Dictionnaire>();
+        SortedList<int, Dictionnaire> mondico;
         Plateau monplateau;
-        public Jeu(Plateau monplateau, List<Dictionnaire> mondico)
+        public Jeu(Plateau monplateau, SortedList<int, Dictionnaire> mondico)
         {
             this.mondico = mondico;
             this.monplateau = monplateau;
         }
 
+        public bool MotEligible(string mot)
+        {
+            if (mot.Length>=3){
+                if (this.mondico[mot.Length].Mots.Contains(mot))
+                {
+                    bool[,] valide = new bool[4, 4];
+                    monplateau.Test_Plateau(monplateau.x_pos(mot[0]), monplateau.y_pos(mot[0]), 0, mot, valide);
+                }
+            }
 
+            return false;
+        }
+
+       /* public void Tour()
+        {
+            do
+            {
+
+            } while 
+            Console.WriteLine("Saisir un mot");
+            MotEligible(Console.ReadLine());
+        }*/
+        
     }
 }
