@@ -13,7 +13,6 @@ namespace Boogle_V0
     class Plateau
     {
         List<De> de_plateau;
-
         /// <summary>
         /// Le constructeur de la classe remplit le plateau.
         /// </summary>
@@ -49,7 +48,7 @@ namespace Boogle_V0
             {
                 for (int j = 0; j < 4;j++)
                 {
-                    if (de_plateau[compteur].Equals(face)) return j;
+                    if (de_plateau[compteur].Face_Visible.Equals(face)) return j;
                     compteur++;
                 }
                 
@@ -65,31 +64,44 @@ namespace Boogle_V0
             {
                 for (int j = 0; j < 4; j++)
                 {
-                    if (de_plateau[compteur].Equals(face)) return i;
+                    if (de_plateau[compteur].Face_Visible.Equals(face)) return i;
                     compteur++;
                 }
             }
             return -10;
         }
-    
 
-        public bool Test_Plateau(int previous_x, int previous_y, int compteur, string mot)
+    /*    public int Occurrence(char face)
         {
+            char
+            return 1;
+        }*/
+
+
+
+        public bool Test_Plateau(int previous_x, int previous_y, int compteur, string mot, bool[,] used_de)
+        {
+
             if (compteur < 0)
             {
-
                 int delta_x = x_pos(mot[compteur]) - previous_x;
                 int delta_y = y_pos(mot[compteur]) - previous_y;
 
                 if (x_pos(mot[compteur]) != -10 && y_pos(mot[compteur]) != -10)
                 {
-                    if (delta_x == 0 && (delta_y == delta_x))
+                    if ((delta_x == 0 && (delta_y == delta_x)) || used_de[x_pos(mot[compteur]), y_pos(mot[compteur])] ==true)
                     {
                         return false;
                     }
                     else
                     {
-                        if ((delta_x == 0 || delta_x == -1 || delta_x == 1) && (delta_y == 0 || delta_y == -1 || delta_y == 1)) return (Test_Plateau(x_pos(mot[compteur]), y_pos(mot[compteur]), compteur - 1, mot));
+                        if ((delta_x == 0 || delta_x == -1 || delta_x == 1) && (delta_y == 0 || delta_y == -1 || delta_y == 1))
+                        {
+
+                            used_de[x_pos(mot[compteur]), y_pos(mot[compteur])] = true;
+                            return (Test_Plateau(x_pos(mot[compteur]), y_pos(mot[compteur]), compteur - 1, mot, used_de));
+                        }
+                            
                     }
 
                     return false;

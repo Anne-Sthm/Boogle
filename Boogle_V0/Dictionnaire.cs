@@ -24,16 +24,16 @@ namespace Boogle_V0
             try
             {
                 StreamReader sr = new StreamReader(File.OpenRead(@"MotsPossibles - Copy.txt"));
+                
+                    while ((line = sr.ReadLine()) != Convert.ToString(taille))
+                    {
 
-                while ((line = sr.ReadLine()) != Convert.ToString(taille))
-                {
+                    }
 
-                }
-
-                while ((line = sr.ReadLine()) != Convert.ToString(taille + 1))
+                while (((line = sr.ReadLine()) != Convert.ToString(taille + 1)) && line!=null)
                 {
                     i = 0;
-                    string[] ligne = line.Split(" ");
+                    string[] ligne = line.Split(' ');
                     while (i < ligne.Length)
                     {
                         lmots.Add(ligne[i]);
@@ -41,6 +41,8 @@ namespace Boogle_V0
                     }
 
                 }
+                
+                
 
                 sr.Close();
 
@@ -66,14 +68,31 @@ namespace Boogle_V0
             return ("Taille : " + this.mots.Count + "\n Langue : " + this.langue);
         }
 
+
         public bool RechDichoRecursif(int debut, int fin, string mot)
         {
-            for (int i = debut; i < fin; i++)
+            if (debut == fin)
             {
-
-                if (mots[i].Equals(mot)) return true;
+                return false;
             }
-            return false;
+            if (mots[debut].Equals(mot)||mots[fin].Equals(mot))
+            {
+                return true;
+            }
+            if (mots[(debut + fin) / 2 - 1].Equals(mot))
+            {
+                return true;
+            }
+
+            else if (String.Compare(mots[(debut + fin) / 2 - 1], mot, false) >= 1)
+            {
+                return (RechDichoRecursif(debut, (debut + fin) / 2  , mot));
+            }
+            else
+            {
+                return (RechDichoRecursif((debut + fin) / 2  , fin, mot));
+
+            }
         }
 
 

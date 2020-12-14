@@ -7,17 +7,22 @@ namespace Boogle_V0
     {
         static void Main(string[] args)
         {
+            /* for(int i = 2; i < 16; i++)
+             {
+                 List<string> lmots = new List<string>();
+                 lmots = Dictionnaire.Creation_Dico(i);
+                 Dictionnaire dico = new Dictionnaire(lmots, i, "français");
+             }*/
 
-            /*Plateau new_de = new Plateau();
-            Console.WriteLine(new_de.ToString());*/
-
-            // Dictionnaire dico = new Dictionnaire(Dictionnaire.readfile("y"), "français");
-            // dico.deux();
 
             List<string> lmots = new List<string>();
-            lmots=Dictionnaire.Creation_Dico(2);
-            Dictionnaire dico = new Dictionnaire(lmots, 2, "français");
-            Console.WriteLine(dico.ToString());
+            lmots = Dictionnaire.Creation_Dico(15);
+            Dictionnaire dico = new Dictionnaire(lmots, 15, "français");
+            Console.WriteLine(dico.RechDichoRecursif(0, lmots.Count-1, "INNOCENTERAIENT"));
+
+
+             
+
 
         }
     }
