@@ -31,23 +31,24 @@ namespace Boogle_V0
                 while ((line = flux.ReadLine()) != null)
                 {
                     i = 0;
-                    listedestring.Clear();
+                    
                     string[] ligne = line.Split(" ");
                     if (Int32.TryParse(ligne[i], out resultat))
                     {
+                        des_mots.Add(key, listedestring);
                         key = resultat;
-                        
+                        listedestring.Clear();
+
                     } else
                     {
                         while (i < ligne.Length - 1)
                         {
                             listedestring.Add(ligne[i]);
-                            Console.WriteLine(ligne[i]);
                             i++;
                         }
                     }
 
-                    des_mots.Add(key, listedestring);
+                    
                 }
             }
             catch (Exception e)
