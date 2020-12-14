@@ -1,0 +1,14 @@
+C:\Users\Anne\Desktop\Informatique\Boogle_V0\Boogle_V0\bin\Debug\netcoreapp3.1\Boogle_V0.exe
+C:\Users\Anne\Desktop\Informatique\Boogle_V0\Boogle_V0\bin\Debug\netcoreapp3.1\Boogle_V0.deps.json
+C:\Users\Anne\Desktop\Informatique\Boogle_V0\Boogle_V0\bin\Debug\netcoreapp3.1\Boogle_V0.runtimeconfig.json
+C:\Users\Anne\Desktop\Informatique\Boogle_V0\Boogle_V0\bin\Debug\netcoreapp3.1\Boogle_V0.runtimeconfig.dev.json
+C:\Users\Anne\Desktop\Informatique\Boogle_V0\Boogle_V0\bin\Debug\netcoreapp3.1\Boogle_V0.dll
+C:\Users\Anne\Desktop\Informatique\Boogle_V0\Boogle_V0\bin\Debug\netcoreapp3.1\Boogle_V0.pdb
+C:\Users\Anne\Desktop\Informatique\Boogle_V0\Boogle_V0\obj\Debug\netcoreapp3.1\Boogle_V0.csprojAssemblyReference.cache
+C:\Users\Anne\Desktop\Informatique\Boogle_V0\Boogle_V0\obj\Debug\netcoreapp3.1\Boogle_V0.AssemblyInfoInputs.cache
+C:\Users\Anne\Desktop\Informatique\Boogle_V0\Boogle_V0\obj\Debug\netcoreapp3.1\Boogle_V0.AssemblyInfo.cs
+C:\Users\Anne\Desktop\Informatique\Boogle_V0\Boogle_V0\obj\Debug\netcoreapp3.1\Boogle_V0.csproj.CoreCompileInputs.cache
+C:\Users\Anne\Desktop\Informatique\Boogle_V0\Boogle_V0\obj\Debug\netcoreapp3.1\Boogle_V0.dll
+C:\Users\Anne\Desktop\Informatique\Boogle_V0\Boogle_V0\obj\Debug\netcoreapp3.1\Boogle_V0.pdb
+C:\Users\Anne\Desktop\Informatique\Boogle_V0\Boogle_V0\obj\Debug\netcoreapp3.1\Boogle_V0.genruntimeconfig.cache
+C:\Users\Anne\Desktop\Informatique\Boogle_V0\Boogle_V0\bin\Debug\netcoreapp3.1\Boogle_V0.xml

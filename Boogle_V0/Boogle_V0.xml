@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Boogle_V0</name>
+    </assembly>
+    <members>
+        <member name="T:Boogle_V0.Plateau">
+            <summary>
+            La classe plateau représente le plateau de dés sur lequel le joueur va chercher des mots.
+            </summary>
+            <remarks>
+            La face visible de chaque dé est différente.
+            </remarks>
+        </member>
+        <member name="M:Boogle_V0.Plateau.#ctor">
+            <summary>
+            Le constructeur de la classe remplit le plateau.
+            </summary>
+        </member>
+    </members>
+</doc>
