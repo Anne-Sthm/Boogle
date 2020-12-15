@@ -9,16 +9,22 @@ namespace Boogle_V0
     {
         SortedList<int, Dictionnaire> mondico;
         Plateau monplateau;
-        public Jeu(Plateau monplateau, SortedList<int, Dictionnaire> mondico)
+        Joueur joueur;
+        public Jeu(Plateau monplateau, SortedList<int, Dictionnaire> mondico, Joueur joueur)
         {
             this.mondico = mondico;
             this.monplateau = monplateau;
+            this.joueur = joueur;
         }
 
+        public Plateau Monplateau
+        {
+            get { return this.monplateau; }
+        }
         // Teste si le mot est ligible 
         public bool MotEligible(string mot)
         {
-            if (mot.Length>=3){
+            if (mot.Length>=3 && mot.Length<=15){
                 if (this.mondico[mot.Length].Mots.Contains(mot)) // Vérifie que le mot appartient au dictionnaire
                 {
                     bool[,] valide = new bool[4, 4];
@@ -30,19 +36,33 @@ namespace Boogle_V0
         }
 
         // Console.Readline
-        public string TryRL(int time)
+
+ 
+        
+        public static string TryRL(int time)
         {
             Task<string> task = Task.Factory.StartNew(Console.ReadLine);
-            string r = task.Wait(time*1000) ? task.Result : "      "; // Si le Readline ne s'est pas effectué dans le temps imparti on renvoie un string vide 
-            return r;
+            //string r = task.Wait(time*1000) ? task.Result : "      "; // Si le Readline ne s'est pas effectué dans le temps imparti on renvoie un string vide 
+            return task.Result;
         }
+
+       
         
-        public void Tour(Joueur joueur, int time)
+        public void Tour(int time, string proposition)
         {
-            
-            Console.WriteLine("Saisir un mot");
+            //string proposition;
+            //Console.WriteLine("Saisir un mot");
             Console.SetCursorPosition(0, 10);
-            string proposition = TryRL(time); // Readline
+            //proposition = TryRL(time); // Readline
+            //  string proposition = Console.ReadLine();
+            /*try
+            {
+                proposition = Reader.ReadLine(time * 1000 -1);
+
+            } catch (TimeoutException)
+            {
+                proposition = "      ";
+            }*/
             
             
             if (MotEligible(proposition))
@@ -56,9 +76,9 @@ namespace Boogle_V0
                 } else
                 {
                     Console.SetCursorPosition(0, 10);
-                    Console.WriteLine("Vous gagnez : " + proposition.Length + " points !");
-                    joueur.Add_Mot(proposition);
-                    joueur.Score += proposition.Length;
+                    Console.WriteLine(joueur.ToString() +" : " + proposition.Length + " points !");
+                    this.joueur.Add_Mot(proposition);
+                    this.joueur.Score += proposition.Length;
                 }
 
             } else
