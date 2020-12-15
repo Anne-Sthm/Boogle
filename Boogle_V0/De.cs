@@ -8,66 +8,80 @@ namespace Boogle_V0
 {
     class De
     {
-        List<char> faces;
-        char face_visible;
+
+        List<char> faces; // liste de lettre des faces du dé
+        char face_visible; // lettre de la face visible
         static List<char> faces_visibles = new List<char>();
+
+        /// <summary>
+        /// Constructeur de la classe De
+        /// </summary>
+        /// <param name="filename"> chemin ramenant au dossier utilisé pour construire notre dé </param>
         public De(string filename)
         {
-            
             this.faces = Recup_De(filename);
             testFaces();
-
-            
-            
         }
 
-        public void face_x()
-        {
-            foreach(char f in faces_visibles)
-            {
-                Console.Write(f);
-            }
-            Console.WriteLine();
-        }
+
+        /// <summary>
+        /// reduire le nombre de lettres similaires sur une face
+        /// </summary>
         public void testFaces()
         {
             bool exist = true;
-            int timeout=0;
+            int timeout = 0;
             this.face_visible = this.faces[Lance()];
-            while (exist & faces_visibles.Count!=0)
+            while (exist & faces_visibles.Count != 0)
             {
-                
+
                 this.face_visible = this.faces[Lance()];
                 exist = faces_visibles.Contains(this.face_visible);
                 timeout++;
                 if (timeout > 10000) exist = false;
 
-
             }
 
             faces_visibles.Add(this.face_visible);
-         
-        }
-        public char Face_Visible{
-            get {return this.face_visible;}
         }
 
+        /// <summary>
+        /// Nous retourne la lettre d'une face visible en char
+        /// </summary>
+        public char Face_Visible
+        {
+            get { return this.face_visible; }
+        }
+
+        /// <summary>
+        /// permet de tirer au hasard une lettre parmi les 6
+        /// </summary>
+        /// <returns> le numéro de la lettre retouné en int</returns>
         public int Lance()
         {
             Random r = new Random();
-            return r.Next(0, 36)/6;
+            return r.Next(0, 36) / 6;
         }
 
+        /// <summary>
+        /// retourne une chaîne de caractères qui décrit un dé.
+        /// </summary>
+        /// <returns> chaine de carcatères décrivant le dé en string </returns>
         public override string ToString()
         {
             string description = "";
-            foreach(char face in this.faces)
+            foreach (char face in this.faces)
             {
                 description = String.Concat(description, face, " ");
             }
             return ("Face visible : " + this.face_visible + "\n Faces : " + description);
         }
-        
+
+        /// <summary>
+        /// lecteur du dossier pour construire notre dé
+        /// </summary>
+        /// <param name="filemane">chemin ramenant au dossier utilisé pour construire notre dé</param>
+        /// <returns> liste faces_visibles pour le constructeur</returns>
         public List<char> Recup_De(string filemane)
         {
             

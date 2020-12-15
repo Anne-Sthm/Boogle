@@ -35,9 +35,9 @@ namespace Boogle_V0
 
         public override string ToString()
         {
-            return (de_plateau[0].Face_Visible + " "+de_plateau[1].Face_Visible + " " + de_plateau[2].Face_Visible + " " + de_plateau[3].Face_Visible + " " +
-                de_plateau[4].Face_Visible + " " + de_plateau[5].Face_Visible + " " + de_plateau[6].Face_Visible + " " + de_plateau[7].Face_Visible + " " +
-                de_plateau[8].Face_Visible + " " + de_plateau[9].Face_Visible + " " + de_plateau[10].Face_Visible + " " + de_plateau[11].Face_Visible + " " +
+            return (de_plateau[0].Face_Visible + " "+de_plateau[1].Face_Visible + " " + de_plateau[2].Face_Visible + " " + de_plateau[3].Face_Visible + "\n" + 
+                de_plateau[4].Face_Visible + " " + de_plateau[5].Face_Visible + " " + de_plateau[6].Face_Visible + " " + de_plateau[7].Face_Visible + "\n" +
+                de_plateau[8].Face_Visible + " " + de_plateau[9].Face_Visible + " " + de_plateau[10].Face_Visible + " " + de_plateau[11].Face_Visible + "\n" +
                 de_plateau[12].Face_Visible + " " + de_plateau[13].Face_Visible + " " + de_plateau[14].Face_Visible + " " + de_plateau[15].Face_Visible );
         } 
 
@@ -99,7 +99,7 @@ namespace Boogle_V0
                         {
 
                             used_de[x_pos(mot[compteur]), y_pos(mot[compteur])] = true;
-                            return (Test_Plateau(x_pos(mot[compteur]), y_pos(mot[compteur]), compteur - 1, mot, used_de));
+                            return (Test_Plateau(x_pos(mot[compteur]), y_pos(mot[compteur]), compteur +1, mot, used_de));
                         }
                             
                     }
