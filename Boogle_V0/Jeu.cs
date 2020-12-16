@@ -35,39 +35,19 @@ namespace Boogle_V0
             return false;
         }
 
-        // Console.Readline
 
- 
-        
-        public static string TryRL(int time)
-        {
-            Task<string> task = Task.Factory.StartNew(Console.ReadLine);
-            //string r = task.Wait(time*1000) ? task.Result : "      "; // Si le Readline ne s'est pas effectué dans le temps imparti on renvoie un string vide 
-            return task.Result;
-        }
-
-       
         
         public void Tour(int time, string proposition)
         {
-            //string proposition;
-            //Console.WriteLine("Saisir un mot");
-            Console.SetCursorPosition(0, 10);
-            //proposition = TryRL(time); // Readline
-            //  string proposition = Console.ReadLine();
-            /*try
-            {
-                proposition = Reader.ReadLine(time * 1000 -1);
 
-            } catch (TimeoutException)
-            {
-                proposition = "      ";
-            }*/
-            
-            
+            Console.SetCursorPosition(0, 15);
+            Console.Write(new string(' ', Console.WindowWidth));
+
             if (MotEligible(proposition))
             {
-                Console.SetCursorPosition(0, 9);
+                Console.SetCursorPosition(0, 10);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(0, 10);
                 Console.WriteLine("Le mot " + proposition + " est correct");
                 if (joueur.Contain(proposition))
                 {
@@ -75,19 +55,21 @@ namespace Boogle_V0
                     Console.WriteLine("Vous avez déjà joué le mot "+proposition+", vous ne gagnez aucun point ! :( ");
                 } else
                 {
-                    Console.SetCursorPosition(0, 10);
-                    Console.WriteLine(joueur.ToString() +" : " + proposition.Length + " points !");
+                    Console.SetCursorPosition(0, 11);
+                    Console.WriteLine("Vous avez gagné " + proposition.Length + " points !");
                     this.joueur.Add_Mot(proposition);
                     this.joueur.Score += proposition.Length;
                 }
 
             } else
             {
-                if (!proposition.Equals("      "))
-                {
-                    Console.SetCursorPosition(0, 9);
-                    Console.WriteLine("Le mot " + proposition + " est incorrect :(");
-                }
+                Console.SetCursorPosition(0, 10);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(0, 10);
+                Console.WriteLine("Le mot " + proposition + " est incorrect :(");
+                Console.SetCursorPosition(0, 11);
+                Console.Write(new string(' ', Console.WindowWidth));
+                
                 
             }
         }

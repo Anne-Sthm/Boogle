@@ -71,14 +71,6 @@ namespace Boogle_V0
             return -10;
         }
 
-    /*    public int Occurrence(char face)
-        {
-            char
-            return 1;
-        }*/
-
-
-
         public bool Test_Plateau(int previous_x, int previous_y, int compteur, string mot, bool[,] used_de)
         {
 

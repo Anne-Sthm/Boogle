@@ -13,31 +13,80 @@ namespace Boogle_V0
 
     class Program
     {
-        static int minutes=0;
-        static int secondes=60;
-        static Jeu jeu_1;
-        static Jeu jeu_2;
-        static Jeu jeu_courant;
-        static Plateau plateau;
-        static bool plateauFini;
-        static object consoleLock;
+        const int minute = 60000;
+        const int seconde = 1000;
 
+        static int minutes_elapsed = 0;
+        static int secondes_elapsed = 60;
+        static Jeu game_player1;
+        static Jeu game_player2;
+        static Jeu current_game;
+        static Plateau plateau;
+        static bool draw;
+        static object consoleLock;
+        static string word;
+
+        public static void Ending()
+        {
+            int WHOLE = 1600;
+            int HALF = WHOLE / 2;
+            int QUARTER = HALF / 2;
+            int EIGHTH = QUARTER / 2;
+
+
+            int A = 440;
+            int Bbas = 246;
+            int B = 493;
+            int D = 294;
+            int E = 330;
+            int Fsharp = 370;
+            int Gsharp = 415;
+
+            Console.Write("Veuillez patientez ( avec notre super musique de fin )");
+            Console.Beep(Fsharp, EIGHTH);
+            Console.Beep(Fsharp, EIGHTH);
+            Console.Beep(D, EIGHTH);
+            Console.Beep(Bbas, EIGHTH);
+            Console.Beep(Bbas, QUARTER);
+            Console.Beep(E, QUARTER);
+            Console.Beep(E, QUARTER);
+            Console.Beep(E, EIGHTH);
+            Console.Write(" :) ");
+            Console.Beep(Gsharp, EIGHTH);
+            Console.Beep(Gsharp, EIGHTH);
+            Console.Beep(A, EIGHTH);
+            Console.Beep(B, EIGHTH);
+            Console.Beep(A, EIGHTH);
+            Console.Beep(A, EIGHTH);
+            Console.Write(" :) ");
+            Console.Beep(A, EIGHTH);
+            Console.Beep(E, QUARTER);
+            Console.Beep(D, QUARTER);
+            Console.Beep(Fsharp, QUARTER);
+            Console.Beep(Fsharp, QUARTER);
+            Console.Beep(Fsharp, EIGHTH);
+            Console.Beep(E, EIGHTH);
+            Console.Beep(E, EIGHTH);
+            Console.Beep(Fsharp, EIGHTH);
+            Console.Beep(E, EIGHTH);
+            Console.Beep(Fsharp, EIGHTH);
+        }
         public static void ChronoSecondes(Object source, ElapsedEventArgs e)
         {
             lock(consoleLock)
             {
-                if (plateauFini)
+                if (draw)
                 {
                     int colonne = Console.CursorLeft;
                     int ligne = Console.CursorTop;
                     Console.SetCursorPosition(0, 0);
-                    Console.Write("                                  ");
+                    Console.Write(new string(' ', Console.WindowWidth));
                     Console.SetCursorPosition(0, 0);
-                    Console.Write("Temps restant : " + secondes + plateauFini);
+                    Console.Write("Temps restant : " + secondes_elapsed);
                     Console.SetCursorPosition(colonne, ligne);
-                    if (secondes > 0)
+                    if (secondes_elapsed > 0)
                     {
-                        secondes--;
+                        secondes_elapsed--;
                     }
                 }
             }
@@ -48,26 +97,26 @@ namespace Boogle_V0
         {
             lock (consoleLock)
             {
-                minutes++;
-                secondes = 60;
+                minutes_elapsed++;
+                secondes_elapsed = 60;
                 Console.Clear();
-                plateauFini = false;
-                if (minutes < 6)
+                draw = false;
+                if (minutes_elapsed < 6)
                 {
 
-                    if (minutes % 2 == 0)
+                    if (minutes_elapsed % 2 == 0)
                     {
                         for (int i = 3; i < 8; i++)
                         {
                             Console.SetCursorPosition(0, i);
-                            Console.Write("                                  ");
+                            Console.Write(new string(' ', Console.WindowWidth));
                         }
                         Console.SetCursorPosition(0, 2);
                         Console.WriteLine("Joueur 1");
                         Console.WriteLine("------------------");
                         Console.WriteLine(plateau.ToString());
                         //jeu_1.Tour(secondes);
-                        jeu_courant = jeu_1;
+                        current_game = game_player1;
 
                     }
                     else
@@ -75,17 +124,20 @@ namespace Boogle_V0
                         for (int i = 3; i < 8; i++)
                         {
                             Console.SetCursorPosition(0, i);
-                            Console.Write("                                  ");
+                            Console.Write(new string(' ', Console.WindowWidth));
                         }
                         Console.SetCursorPosition(0, 2);
                         Console.WriteLine("Joueur 2");
                         Console.WriteLine("------------------");
                         Console.WriteLine(plateau.ToString());
                         //jeu_2.Tour(secondes);
-                        jeu_courant = jeu_2;
+                        current_game = game_player2;
                     }
                     Console.WriteLine("Saisir un mot");
-                    plateauFini = true;
+                    draw = true;
+                } else
+                {
+                    Console.WriteLine("La partie est finie, appuyez sur une touche pour connaître les résultats");
                 }
             }
         }
@@ -104,94 +156,63 @@ namespace Boogle_V0
 
             // Création des joueurs
             List<string> mots_trouves1 = new List<string>();
-            Joueur j1 = new Joueur(mots_trouves1, 0, "Anne");
+            Joueur player1 = new Joueur(mots_trouves1, 0, "Anne");
             List<string> mots_trouves2 = new List<string>();
-            Joueur j2 = new Joueur(mots_trouves2, 0, "Victor");
+            Joueur player2 = new Joueur(mots_trouves2, 0, "Victor");
 
             // Création du plateau
             plateau = new Plateau();
 
             // Création du jeu
-            jeu_1 = new Jeu(plateau, liste_dico, j1);
-            jeu_2 = new Jeu(plateau, liste_dico, j2);
+            game_player1 = new Jeu(plateau, liste_dico, player1);
+            game_player2 = new Jeu(plateau, liste_dico, player2);
 
-            jeu_courant = jeu_1;
+            current_game = game_player1;
 
             // Début du jeu
 
-            Timer chrono_jeu = new System.Timers.Timer(60000); // Toutes les 10 secondes
+            Timer chrono_jeu = new System.Timers.Timer(minute); // Toutes les 10 secondes
             chrono_jeu.AutoReset = true;
             chrono_jeu.Enabled = true;
             chrono_jeu.Elapsed += ChronoMinutes; // Routine du timer
 
-            Timer temps_restant = new System.Timers.Timer(1000); // Toutes les secondes
+            Timer temps_restant = new System.Timers.Timer(seconde); // Toutes les secondes
             temps_restant.AutoReset = true;
             temps_restant.Enabled = true;
             temps_restant.Elapsed += ChronoSecondes; // Routine du timer
 
-            plateauFini = false;
+            draw = false;
             chrono_jeu.Start();
             temps_restant.Start();
 
-            DateTime start = DateTime.Now;
-            TimeSpan tps_ecoule;
-            tps_ecoule = start - DateTime.Now;
 
             for (int i = 3; i < 8; i++)
             {
                 Console.SetCursorPosition(0, i);
-                Console.Write("                                  ");
+                Console.Write(new string(' ', Console.WindowWidth));
             }
             Console.SetCursorPosition(0, 2);
             Console.WriteLine("Joueur 1");
             Console.WriteLine("------------------");
             Console.WriteLine(plateau.ToString());
             Console.WriteLine("Saisir un mot");
-            plateauFini = true;
-            //while (minutes < 6)
-            //{
+            draw = true;
 
-            //    while (minutes % 2 == 0) 
-            //    {
-            //        for (int i = 3; i < 8; i++)
-            //        {
-            //            Console.SetCursorPosition(0, i);
-            //            Console.Write("                                  ");
-            //        }
-            //        Console.SetCursorPosition(0, 2);
-            //        Console.WriteLine("Joueur 1");
-            //        Console.WriteLine("------------------");
-            //        Console.WriteLine(plateau.ToString());
-            //        jeu_1.Tour(secondes);
-
-            //    } 
-            //    while(minutes % 2 == 1) { 
-            //    }
-            //    {
-            //        for (int i = 3; i < 8; i++)
-            //        {
-            //            Console.SetCursorPosition(0, i);
-            //            Console.Write("                                  ");
-            //        }
-            //        Console.SetCursorPosition(0, 2);
-            //        Console.WriteLine("Joueur 2");
-            //        Console.WriteLine("------------------");
-            //        Console.WriteLine(plateau.ToString());
-            //        jeu_2.Tour(secondes);
-            //    }
-            //}
-            while (minutes < 6)
+            while (minutes_elapsed < 6)
             {
-                string proposition = Console.ReadLine();
-                jeu_courant.Tour(secondes, proposition);
+                Console.SetCursorPosition(0, 15);
+                Console.Write(new string(' ', Console.WindowWidth));
+                Console.SetCursorPosition(0, 15);
+                word = Console.ReadLine().ToUpper();
+                current_game.Tour(secondes_elapsed, word);
             } 
 
             chrono_jeu.Stop();
             temps_restant.Stop();
             Console.Clear();
-            Console.WriteLine("Le temps est écoulé !");
-            Console.WriteLine(j1.ToString());
-            Console.WriteLine(j2.ToString());
+            Ending();
+            Console.WriteLine(player1.ToString());
+            Console.WriteLine(player2.ToString());
 
 
             
