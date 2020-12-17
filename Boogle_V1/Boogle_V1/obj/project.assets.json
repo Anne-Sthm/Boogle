@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Anne\\source\\repos\\Boogle_V1\\Boogle_V1\\Boogle_V1.csproj",
+      "projectUniqueName": "C:\\Users\\Anne\\Desktop\\Informatique\\Boogle_V1\\Boogle_V1\\Boogle_V1.csproj",
       "projectName": "Boogle_V1",
-      "projectPath": "C:\\Users\\Anne\\source\\repos\\Boogle_V1\\Boogle_V1\\Boogle_V1.csproj",
+      "projectPath": "C:\\Users\\Anne\\Desktop\\Informatique\\Boogle_V1\\Boogle_V1\\Boogle_V1.csproj",
       "packagesPath": "C:\\Users\\Anne\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Anne\\source\\repos\\Boogle_V1\\Boogle_V1\\obj\\",
+      "outputPath": "C:\\Users\\Anne\\Desktop\\Informatique\\Boogle_V1\\Boogle_V1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Anne\\AppData\\Roaming\\NuGet\\NuGet.Config",
