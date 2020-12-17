@@ -25,6 +25,7 @@ namespace Boogle
         public bool RechDichoRecursif(int debut, int fin, string mot)
         {
             for (int i = debut; i < fin; i++){
+
                 if (mots[i].Equals(mot)) return true;
             }
             return false;
