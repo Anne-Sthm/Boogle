@@ -13,4 +13,23 @@
     <OutputPath></OutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <COMReference Include="MediaPlayer.dll">
+      <Guid>22d6f304-b0f6-11d0-94ab-0080c74c7e95</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib.dll">
+      <Guid>6bf52a50-394a-11d3-b153-00c04f79faa6</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+    </COMReference>
+  </ItemGroup>
+
 </Project>

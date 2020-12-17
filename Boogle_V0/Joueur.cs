@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Boogle_V0
 {
+    /// <summary>
+    /// 
+    /// </summary>
     class Joueur
     {
         List<string> found_words;
@@ -11,13 +14,13 @@ namespace Boogle_V0
         string nom;
 
         /// <summary>
-        /// Constructeur de la classe Joueur
+        /// Constructeur de la classe Joueur.
         /// </summary>
-        /// <param name="found_words">mots trouvés par le joueur pendant la partie</param>
-        /// <param name="score"> score du jour </param>
-        /// <param name="nom">nom du joueur</param>
+        /// <param name="found_words">Mots trouvés par le joueur pendant la partie.</param>
+        /// <param name="score">Score du jour. </param>
+        /// <param name="nom">Nom du joueur.</param>
         public Joueur(List<string> found_words, int score, string nom)
-        {
+        { 
             this.found_words = found_words;
             this.score = score;
             this.nom = nom;
@@ -30,10 +33,10 @@ namespace Boogle_V0
         }
 
         /// <summary>
-        /// teste si le mot passé appartient déjà aux mots trouvés par le joueur pendant la partie
+        /// Teste si le mot passé appartient déjà aux mots trouvés par le joueur pendant la partie.
         /// </summary>
         /// <param name="mot">mot testé</param>
-        /// <returns>True si le mot à déjà été trouvé, False sinon</returns>
+        /// <returns>True si le mot à déjà été trouvé, False sinon.</returns>
         public bool Contain(string mot)
         {
             return this.found_words.Contains(mot);
@@ -41,9 +44,9 @@ namespace Boogle_V0
 
 
         /// <summary>
-        /// ajoute le mot dans la liste des mots déjà trouvés par le joueur au cours de la partie
+        /// Ajoute le mot dans la liste des mots déjà trouvés par le joueur au cours de la partie.
         /// </summary>
-        /// <param name="mot"> mot qui va être ajouté dans la liste</param>
+        /// <param name="mot"> Mot qui va être ajouté dans la liste.</param>
         public void Add_Mot(string mot)
         {
             this.found_words.Add(mot);
@@ -51,7 +54,7 @@ namespace Boogle_V0
 
 
         /// <summary>
-        /// retourne une chaîne de caractères qui décrit un joueur
+        /// Retourne une chaîne de caractères qui décrit un joueur.
         /// </summary>
         /// <returns> chaine de caractère décrivant le joueur </returns>
         public override string ToString()

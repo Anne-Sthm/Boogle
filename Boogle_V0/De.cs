@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace Boogle_V0
 {
+    /// <summary>
+    /// 
+    /// </summary>
     class De
     {
 
@@ -13,21 +16,22 @@ namespace Boogle_V0
         char face_visible; // lettre de la face visible
         static List<char> faces_visibles = new List<char>();
 
+
         /// <summary>
-        /// Constructeur de la classe De
+        /// Constructeur de la classe De.
         /// </summary>
-        /// <param name="filename"> chemin ramenant au dossier utilisé pour construire notre dé </param>
+        /// <param name="filename"> Chemin ramenant au dossier utilisé pour construire notre dé. </param>
         public De(string filename)
         {
             this.faces = Recup_De(filename);
-            testFaces();
+            Side_Generator();
         }
 
 
         /// <summary>
-        /// reduire le nombre de lettres similaires sur une face
+        /// Réduire le nombre de lettres similaires sur une face.
         /// </summary>
-        public void testFaces()
+        public void Side_Generator()
         {
             bool exist = true;
             int timeout = 0;
@@ -46,7 +50,7 @@ namespace Boogle_V0
         }
 
         /// <summary>
-        /// Nous retourne la lettre d'une face visible en char
+        /// Nous retourne la lettre d'une face visible en char.
         /// </summary>
         public char Face_Visible
         {
@@ -54,9 +58,9 @@ namespace Boogle_V0
         }
 
         /// <summary>
-        /// permet de tirer au hasard une lettre parmi les 6
+        /// Permet de tirer au hasard une lettre parmi les 6.
         /// </summary>
-        /// <returns> le numéro de la lettre retouné en int</returns>
+        /// <returns> Le numéro de la lettre retouné en int.</returns>
         public int Lance()
         {
             Random r = new Random();
@@ -64,9 +68,9 @@ namespace Boogle_V0
         }
 
         /// <summary>
-        /// retourne une chaîne de caractères qui décrit un dé.
+        /// Retourne une chaîne de caractères qui décrit un dé.
         /// </summary>
-        /// <returns> chaine de carcatères décrivant le dé en string </returns>
+        /// <returns> Chaine de carcatères décrivant le dé en string. </returns>
         public override string ToString()
         {
             string description = "";
@@ -78,10 +82,10 @@ namespace Boogle_V0
         }
 
         /// <summary>
-        /// lecteur du dossier pour construire notre dé
+        /// Lecteur du dossier pour construire notre dé.
         /// </summary>
-        /// <param name="filemane">chemin ramenant au dossier utilisé pour construire notre dé</param>
-        /// <returns> liste faces_visibles pour le constructeur</returns>
+        /// <param name="filemane">Chemin ramenant au dossier utilisé pour construire notre dé.</param>
+        /// <returns> Liste faces_visibles pour le constructeur.</returns>
         public List<char> Recup_De(string filemane)
         {
             

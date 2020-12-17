@@ -5,11 +5,21 @@ using System.Threading.Tasks;
 
 namespace Boogle_V0
 {
+    /// <summary>
+    /// 
+    /// </summary>
     class Jeu
     {
         SortedList<int, Dictionnaire> mondico;
         Plateau monplateau;
         Joueur joueur;
+
+        /// <summary>
+        /// Constructeur associant le joueur, le plateau et les dictionnaires.
+        /// </summary>
+        /// <param name="monplateau">Plateau de la partie.</param>
+        /// <param name="mondico">Dictionnaire.</param>
+        /// <param name="joueur">Joueur.</param>
         public Jeu(Plateau monplateau, SortedList<int, Dictionnaire> mondico, Joueur joueur)
         {
             this.mondico = mondico;
@@ -17,11 +27,19 @@ namespace Boogle_V0
             this.joueur = joueur;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Plateau Monplateau
         {
             get { return this.monplateau; }
         }
-        // Teste si le mot est ligible 
+        // Teste si le mot est eligible 
+        /// <summary>
+        /// Verifie si le mot appartient au dictionnaire et s'il peut être formé dans cette configuration du plateau. 
+        /// </summary>
+        /// <param name="mot">mot comparé</param>
+        /// <returns>True si les conditions sont completés, else sinon.</returns>
         public bool MotEligible(string mot)
         {
             if (mot.Length>=3 && mot.Length<=15){
@@ -35,9 +53,11 @@ namespace Boogle_V0
             return false;
         }
 
-
-        
-        public void Tour(int time, string proposition)
+        /// <summary>
+        /// Verifie si la proposition du joueur est vrai, modifie l'affichage et le score en fonction.
+        /// </summary>
+        /// <param name="proposition">Mot proposé par le joueur.</param>
+        public void Tour(string proposition)
         {
 
             Console.SetCursorPosition(0, 15);
@@ -69,10 +89,13 @@ namespace Boogle_V0
                 Console.WriteLine("Le mot " + proposition + " est incorrect :(");
                 Console.SetCursorPosition(0, 11);
                 Console.Write(new string(' ', Console.WindowWidth));
-                
-                
+
             }
+            
         }
+
         
+
+
     }
 }
