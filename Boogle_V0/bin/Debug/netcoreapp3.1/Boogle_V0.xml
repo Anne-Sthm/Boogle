@@ -4,105 +4,146 @@
         <name>Boogle_V0</name>
     </assembly>
     <members>
+        <member name="T:Boogle_V0.De">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:Boogle_V0.De.#ctor(System.String)">
             <summary>
-            Constructeur de la classe De
+            Constructeur de la classe De.
             </summary>
-            <param name="filename"> chemin ramenant au dossier utilisé pour construire notre dé </param>
+            <param name="filename"> Chemin ramenant au dossier utilisé pour construire notre dé. </param>
         </member>
-        <member name="M:Boogle_V0.De.testFaces">
+        <member name="M:Boogle_V0.De.Side_Generator">
             <summary>
-            reduire le nombre de lettres similaires sur une face
+            Réduire le nombre de lettres similaires sur une face.
             </summary>
         </member>
         <member name="P:Boogle_V0.De.Face_Visible">
             <summary>
-            Nous retourne la lettre d'une face visible en char
+            Nous retourne la lettre d'une face visible en char.
             </summary>
         </member>
         <member name="M:Boogle_V0.De.Lance">
             <summary>
-            permet de tirer au hasard une lettre parmi les 6
+            Permet de tirer au hasard une lettre parmi les 6.
             </summary>
-            <returns> le numéro de la lettre retouné en int</returns>
+            <returns> Le numéro de la lettre retouné en int.</returns>
         </member>
         <member name="M:Boogle_V0.De.ToString">
             <summary>
-            retourne une chaîne de caractères qui décrit un dé.
+            Retourne une chaîne de caractères qui décrit un dé.
             </summary>
-            <returns> chaine de carcatères décrivant le dé en string </returns>
+            <returns> Chaine de carcatères décrivant le dé en string. </returns>
         </member>
         <member name="M:Boogle_V0.De.Recup_De(System.String)">
             <summary>
-            lecteur du dossier pour construire notre dé
+            Lecteur du dossier pour construire notre dé.
             </summary>
-            <param name="filemane">chemin ramenant au dossier utilisé pour construire notre dé</param>
-            <returns> liste faces_visibles pour le constructeur</returns>
+            <param name="filemane">Chemin ramenant au dossier utilisé pour construire notre dé.</param>
+            <returns> Liste faces_visibles pour le constructeur.</returns>
         </member>
         <member name="M:Boogle_V0.Dictionnaire.#ctor(System.Collections.Generic.List{System.String},System.Int32,System.String)">
             <summary>
-            Constructeur de la classe dictionnaire
+            Constructeur de la classe dictionnaire.
             </summary>
-            <param name="mots"> liste des mots</param>
-            <param name="taille"> taille des mots de la liste</param>
-            <param name="langue"> langue du dictionnaire</param>
+            <param name="mots"> Liste des mots.</param>
+            <param name="taille"> Taille des mots de la liste.</param>
+            <param name="langue"> Langue du dictionnaire.</param>
         </member>
         <member name="M:Boogle_V0.Dictionnaire.Creation_Dico(System.Int32)">
             <summary>
-            Creation de la liste de tous les mots d'une certaine taille
+            Creation de la liste de tous les mots d'une certaine taille.
             </summary>
-            <param name="taille"> taille des mots de la liste</param>
-            <returns> liste de tous les mots francais d'une certaine taille  </returns>
+            <param name="taille"> Taille des mots de la liste.</param>
+            <returns> Liste de tous les mots francais d'une certaine taille.  </returns>
         </member>
         <member name="P:Boogle_V0.Dictionnaire.Taille">
             <summary>
-            Retourne la taille du dictionnaire 
+            Retourne la taille du dictionnaire. 
             </summary>
         </member>
         <member name="P:Boogle_V0.Dictionnaire.Mots">
             <summary>
-            Retourne la liste des mots contenus dans ce dictionnaire 
+            Retourne la liste des mots contenus dans ce dictionnaire. 
             </summary>
         </member>
         <member name="M:Boogle_V0.Dictionnaire.ToString">
             <summary>
-            retourne une chaîne de caractères qui décrit le dictionnaire à savoir ici le nombre de mots par longueur et la langue
+            Retourne une chaîne de caractères qui décrit le dictionnaire à savoir ici le nombre de mots par longueur et la langue.
             </summary>
-            <returns> une chaîne de caractères qui décrit le dictionnaire</returns>
+            <returns>Une chaîne de caractères qui décrit le dictionnaire.</returns>
         </member>
         <member name="M:Boogle_V0.Dictionnaire.RechDichoRecursif(System.Int32,System.Int32,System.String)">
             <summary>
-            Vérifie le mot appartienne bien à un dictionnaire
+            Vérifie le mot appartienne bien à un dictionnaire.
             </summary>
-            <param name="debut"> début de la zone du mot testé</param>
-            <param name="fin"> fin de la zone du mot testé</param>
-            <param name="mot"> mot testé</param>
-            <returns> true si le mot testé appartient au dictionnaire false sinon </returns>
+            <param name="debut"> Début de la zone du mot testé.</param>
+            <param name="fin"> Fin de la zone du mot testé.</param>
+            <param name="mot"> Mot testé.</param>
+            <returns> True si le mot testé appartient au dictionnaire false sinon. </returns>
+        </member>
+        <member name="T:Boogle_V0.Jeu">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Boogle_V0.Jeu.#ctor(Boogle_V0.Plateau,System.Collections.Generic.SortedList{System.Int32,Boogle_V0.Dictionnaire},Boogle_V0.Joueur)">
+            <summary>
+            Constructeur associant le joueur, le plateau et les dictionnaires.
+            </summary>
+            <param name="monplateau">Plateau de la partie.</param>
+            <param name="mondico">Dictionnaire.</param>
+            <param name="joueur">Joueur.</param>
+        </member>
+        <member name="P:Boogle_V0.Jeu.Monplateau">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Boogle_V0.Jeu.MotEligible(System.String)">
+            <summary>
+            Verifie si le mot appartient au dictionnaire et s'il peut être formé dans cette configuration du plateau. 
+            </summary>
+            <param name="mot">mot comparé</param>
+            <returns>True si les conditions sont completés, else sinon.</returns>
+        </member>
+        <member name="M:Boogle_V0.Jeu.Tour(System.String)">
+            <summary>
+            Verifie si la proposition du joueur est vrai, modifie l'affichage et le score en fonction.
+            </summary>
+            <param name="proposition">Mot proposé par le joueur.</param>
+        </member>
+        <member name="T:Boogle_V0.Joueur">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:Boogle_V0.Joueur.#ctor(System.Collections.Generic.List{System.String},System.Int32,System.String)">
             <summary>
-            Constructeur de la classe Joueur
+            Constructeur de la classe Joueur.
             </summary>
-            <param name="found_words">mots trouvés par le joueur pendant la partie</param>
-            <param name="score"> score du jour </param>
-            <param name="nom">nom du joueur</param>
+            <param name="found_words">Mots trouvés par le joueur pendant la partie.</param>
+            <param name="score">Score du jour. </param>
+            <param name="nom">Nom du joueur.</param>
         </member>
         <member name="M:Boogle_V0.Joueur.Contain(System.String)">
             <summary>
-            teste si le mot passé appartient déjà aux mots trouvés par le joueur pendant la partie
+            Teste si le mot passé appartient déjà aux mots trouvés par le joueur pendant la partie.
             </summary>
             <param name="mot">mot testé</param>
-            <returns>True si le mot à déjà été trouvé, False sinon</returns>
+            <returns>True si le mot à déjà été trouvé, False sinon.</returns>
         </member>
         <member name="M:Boogle_V0.Joueur.Add_Mot(System.String)">
             <summary>
-            ajoute le mot dans la liste des mots déjà trouvés par le joueur au cours de la partie
+            Ajoute le mot dans la liste des mots déjà trouvés par le joueur au cours de la partie.
             </summary>
-            <param name="mot"> mot qui va être ajouté dans la liste</param>
+            <param name="mot"> Mot qui va être ajouté dans la liste.</param>
         </member>
         <member name="M:Boogle_V0.Joueur.ToString">
             <summary>
-            retourne une chaîne de caractères qui décrit un joueur
+            Retourne une chaîne de caractères qui décrit un joueur.
             </summary>
             <returns> chaine de caractère décrivant le joueur </returns>
         </member>
@@ -118,6 +159,43 @@
             <summary>
             Le constructeur de la classe remplit le plateau.
             </summary>
+        </member>
+        <member name="M:Boogle_V0.Plateau.Remplir_Plateau">
+            <summary>
+            Rempli le plateau de dés.
+            </summary>
+            <returns>Plateau rempli par la liste de dés.</returns>
+        </member>
+        <member name="M:Boogle_V0.Plateau.ToString">
+            <summary>
+            Retourne une chaîne de caractères qui décrit un plateau.
+            </summary>
+            <returns>Chaîne de caractères le plateau en string.</returns>
+        </member>
+        <member name="M:Boogle_V0.Plateau.y_pos(System.Char)">
+            <summary>
+            Postition sur y.
+            </summary>
+            <param name="face">Face dont l'on cherche la position.</param>
+            <returns>Position sur y en int.</returns>
+        </member>
+        <member name="M:Boogle_V0.Plateau.x_pos(System.Char)">
+            <summary>
+            Position sur x.
+            </summary>
+            <param name="face">Face dont l'on cherche la position.</param>
+            <returns>Position sur x en int.</returns>
+        </member>
+        <member name="M:Boogle_V0.Plateau.Test_Plateau(System.Int32,System.Int32,System.Int32,System.String,System.Boolean[0:,0:])">
+            <summary>
+            Teste si le mot passé en paramètre est un mot éligible c’est-à-dire qu’il respecte la contrainte d’adjacence décrite ci-dessus.
+            </summary>
+            <param name="previous_x">Position précédente sur x.</param>
+            <param name="previous_y">Position précédente sur y.</param>
+            <param name="compteur">Compteur d'itération.</param>
+            <param name="mot">Mot testé.</param>
+            <param name="used_de">Tableau des dés utilisés.</param>
+            <returns>True si le mot passé en paramètre est un mot éligible, false sinon.</returns>
         </member>
     </members>
 </doc>
