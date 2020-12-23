@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Boogle_V0"
+    "\\ProjetV2",
+    "\\ProjetV2\\packages",
+    "\\ProjetV2\\packages\\MSTest.TestAdapter.2.1.1",
+    "\\ProjetV2\\packages\\MSTest.TestFramework.2.1.1",
+    "\\ProjetV2\\ProjetV2",
+    "\\ProjetV2\\ProjetV2\\bin"
   ],
-  "SelectedNode": "\\Boogle_V0\\Class1.cs",
   "PreviewInSolutionExplorer": false
 }
